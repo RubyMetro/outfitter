@@ -19,9 +19,8 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.*/
 
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'dart:async';
-import 'package:http/http.dart' as http;
+import 'api/alerts.dart';
+import 'fetchApi.dart';
 
 void main() {
   print(
@@ -58,10 +57,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  late Alerts _alerts;
+  late bool _loading;
 
   @override
   void initState() {
     super.initState();
+    _loading = true;
+    API.getAlerts().then((alerts) {
+      setState(() {
+        _alerts = alerts;
+        _loading = false;
+      });
+    });
   }
 
   void _incrementCounter() {
@@ -74,12 +82,22 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(_loading ? 'loading' : "alerts for this area fetched"),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ListView.builder(
+              itemCount: null == _alerts.features ? 0 : _alerts.features.length,
+              itemBuilder: ((context, index) {
+                Feature feature = _alerts.features[index];
+                _alerts.features[index];
+                return ListTile(
+                  title: Text(feature.properties.event),
+                );
+              }),
+            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,

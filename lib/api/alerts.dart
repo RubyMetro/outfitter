@@ -5,24 +5,24 @@
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
+Alerts alertsFromJson(String str) => Alerts.fromJson(json.decode(str));
+
+String alertsToJson(Alerts data) => json.encode(data.toJson());
+
 class Alerts {
   Alerts({
-    @required this.context,
-    @required this.type,
-    @required this.features,
-    @required this.title,
-    @required this.updated,
+    required this.context,
+    required this.type,
+    required this.features,
+    required this.title,
+    required this.updated,
   });
 
   final List<dynamic> context;
   final String type;
   final List<Feature> features;
   final String title;
-  final DateTime updated;
-
-  factory Alerts.fromRawJson(String str) => Alerts.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
+  final String updated;
 
   factory Alerts.fromJson(Map<String, dynamic> json) => Alerts(
         context: List<dynamic>.from(json["@context"].map((x) => x)),
@@ -30,7 +30,7 @@ class Alerts {
         features: List<Feature>.from(
             json["features"].map((x) => Feature.fromJson(x))),
         title: json["title"],
-        updated: DateTime.parse(json["updated"]),
+        updated: json["updated"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -38,25 +38,20 @@ class Alerts {
         "type": type,
         "features": List<dynamic>.from(features.map((x) => x.toJson())),
         "title": title,
-        "updated": updated.toIso8601String(),
+        "updated": updated,
       };
 }
 
 class ContextClass {
   ContextClass({
-    @required this.version,
-    @required this.wx,
-    @required this.vocab,
+    required this.version,
+    required this.wx,
+    required this.vocab,
   });
 
   final String version;
   final String wx;
   final String vocab;
-
-  factory ContextClass.fromRawJson(String str) =>
-      ContextClass.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory ContextClass.fromJson(Map<String, dynamic> json) => ContextClass(
         version: json["@version"],
@@ -73,20 +68,16 @@ class ContextClass {
 
 class Feature {
   Feature({
-    @required this.id,
-    @required this.type,
-    @required this.geometry,
-    @required this.properties,
+    required this.id,
+    required this.type,
+    required this.geometry,
+    required this.properties,
   });
 
   final String id;
   final String type;
   final Geometry geometry;
   final Properties properties;
-
-  factory Feature.fromRawJson(String str) => Feature.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory Feature.fromJson(Map<String, dynamic> json) => Feature(
         id: json["id"],
@@ -111,11 +102,6 @@ class Geometry {
 
   final String type;
   final List<List<List<double>>> coordinates;
-
-  factory Geometry.fromRawJson(String str) =>
-      Geometry.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory Geometry.fromJson(Map<String, dynamic> json) => Geometry(
         type: json["type"],
@@ -169,11 +155,11 @@ class Properties {
   final Geocode geocode;
   final List<String> affectedZones;
   final List<dynamic> references;
-  final DateTime sent;
-  final DateTime effective;
-  final DateTime onset;
-  final DateTime expires;
-  final DateTime ends;
+  final String sent;
+  final String effective;
+  final String onset;
+  final String expires;
+  final String ends;
   final String status;
   final String messageType;
   final String category;
@@ -189,11 +175,6 @@ class Properties {
   final String response;
   final Map<String, List<String>> parameters;
 
-  factory Properties.fromRawJson(String str) =>
-      Properties.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory Properties.fromJson(Map<String, dynamic> json) => Properties(
         id: json["@id"],
         type: json["@type"],
@@ -202,11 +183,11 @@ class Properties {
         geocode: Geocode.fromJson(json["geocode"]),
         affectedZones: List<String>.from(json["affectedZones"].map((x) => x)),
         references: List<dynamic>.from(json["references"].map((x) => x)),
-        sent: DateTime.parse(json["sent"]),
-        effective: DateTime.parse(json["effective"]),
-        onset: DateTime.parse(json["onset"]),
-        expires: DateTime.parse(json["expires"]),
-        ends: DateTime.parse(json["ends"]),
+        sent: json["sent"],
+        effective: json["effective"],
+        onset: json["onset"],
+        expires: json["expires"],
+        ends: json["ends"] == null ? null : json["ends"],
         status: json["status"],
         messageType: json["messageType"],
         category: json["category"],
@@ -233,11 +214,11 @@ class Properties {
         "geocode": geocode.toJson(),
         "affectedZones": List<dynamic>.from(affectedZones.map((x) => x)),
         "references": List<dynamic>.from(references.map((x) => x)),
-        "sent": sent.toIso8601String(),
-        "effective": effective.toIso8601String(),
-        "onset": onset.toIso8601String(),
-        "expires": expires.toIso8601String(),
-        "ends": ends == null ? null : ends.toIso8601String(),
+        "sent": sent,
+        "effective": effective,
+        "onset": onset,
+        "expires": expires,
+        "ends": ends == null ? null : ends,
         "status": status,
         "messageType": messageType,
         "category": category,
@@ -264,10 +245,6 @@ class Geocode {
 
   final List<String> same;
   final List<String> ugc;
-
-  factory Geocode.fromRawJson(String str) => Geocode.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory Geocode.fromJson(Map<String, dynamic> json) => Geocode(
         same: List<String>.from(json["SAME"].map((x) => x)),
