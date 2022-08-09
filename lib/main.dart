@@ -23,36 +23,6 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 
-Future<Alerts> fetchAlerts() async {
-  final response = await http
-      .get(Uri.parse('https://api.weather.gov/alerts/active?zone=TXZ130'));
-
-  if (response.statusCode == 200) {
-    //server returned ok!
-    //parse json
-    return Alerts.fromJson(jsonDecode(response.body));
-  } else {
-    throw Exception("Failed to fetch alerts for your area.");
-  }
-}
-
-class Alerts {
-  final String status;
-  final String msgType;
-
-  const Alerts({
-    required this.status,
-    required this.msgType,
-  });
-
-  factory Alerts.fromJson(Map<String, dynamic> json) {
-    return Alerts(
-      status: json['status'],
-      msgType: json['messageType'],
-    );
-  }
-}
-
 void main() {
   print(
       "Outfitter Copyright (C) 2022 Christian Thompson\n\nThis program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions. For more information please refer to the GNU General Public License v3.0");
@@ -88,12 +58,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  late Future<Alerts> alerts;
 
   @override
   void initState() {
     super.initState();
-    alerts = fetchAlerts();
   }
 
   void _incrementCounter() {
@@ -112,19 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FutureBuilder<Alerts>(
-              future: alerts,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text(snapshot.data!.status);
-                } else if (snapshot.hasError) {
-                  return const Text('an error occured. please try again.');
-                }
-
-                // By default, show a loading spinner.
-                return const CircularProgressIndicator();
-              },
-            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,

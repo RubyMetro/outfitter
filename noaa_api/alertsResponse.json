@@ -1,0 +1,538 @@
+{
+    "@context": [
+        "https://geojson.org/geojson-ld/geojson-context.jsonld",
+        {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "@vocab": "https://api.weather.gov/ontology#"
+        }
+    ],
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.67742c7873499fabc6fe0976f8e2b9c6f10a49cf.001.1",
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -80.489999999999995,
+                            35.009999999999998
+                        ],
+                        [
+                            -80.5,
+                            34.879999999999995
+                        ],
+                        [
+                            -80.7099999,
+                            34.839999999999996
+                        ],
+                        [
+                            -80.7099999,
+                            35.059999999999995
+                        ],
+                        [
+                            -80.489999999999995,
+                            35.009999999999998
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.67742c7873499fabc6fe0976f8e2b9c6f10a49cf.001.1",
+                "@type": "wx:Alert",
+                "id": "urn:oid:2.49.0.1.840.0.67742c7873499fabc6fe0976f8e2b9c6f10a49cf.001.1",
+                "areaDesc": "Union",
+                "geocode": {
+                    "SAME": [
+                        "037179"
+                    ],
+                    "UGC": [
+                        "NCZ082"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/forecast/NCZ082"
+                ],
+                "references": [],
+                "sent": "2022-08-08T19:58:00-04:00",
+                "effective": "2022-08-08T19:58:00-04:00",
+                "onset": "2022-08-08T19:58:00-04:00",
+                "expires": "2022-08-08T20:45:00-04:00",
+                "ends": null,
+                "status": "Actual",
+                "messageType": "Alert",
+                "category": "Met",
+                "severity": "Moderate",
+                "certainty": "Observed",
+                "urgency": "Expected",
+                "event": "Special Weather Statement",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Greenville-Spartanburg SC",
+                "headline": "Special Weather Statement issued August 8 at 7:58PM EDT by NWS Greenville-Spartanburg SC",
+                "description": "At 757 PM EDT, Doppler radar was tracking a strong thunderstorm near\nMonroe, moving west at 5 mph.\n\nHAZARD...Wind gusts up to 40 mph and pea size hail.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Minor damage to outdoor objects is\npossible.\n\nLocations impacted include...\nMonroe, Wesley Chapel, Mineral Springs, Indian Trail and Weddington.",
+                "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
+                "response": "Execute",
+                "parameters": {
+                    "AWIPSidentifier": [
+                        "SPSGSP"
+                    ],
+                    "WMOidentifier": [
+                        "WWUS82 KGSP 082358"
+                    ],
+                    "NWSheadline": [
+                        "A strong thunderstorm will impact portions of south central Union County through 845 PM EDT"
+                    ],
+                    "eventMotionDescription": [
+                        "2022-08-08T23:57:00-00:00...storm...091DEG...5KT...34.96,-80.6"
+                    ],
+                    "maxWindGust": [
+                        "40 MPH"
+                    ],
+                    "maxHailSize": [
+                        "0.25"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "EAS",
+                        "NWEM",
+                        "CMAS"
+                    ],
+                    "EAS-ORG": [
+                        "WXR"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b805fd13e2c4ccebb4c76f2bfaca939590df5440.001.1",
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -80.629999999999995,
+                            36.549999999999997
+                        ],
+                        [
+                            -80.61999999999999,
+                            36.559999999999995
+                        ],
+                        [
+                            -80.609999999999985,
+                            36.559999999999995
+                        ],
+                        [
+                            -80.609999999999985,
+                            36.569999999999993
+                        ],
+                        [
+                            -80.529999999999987,
+                            36.639999999999993
+                        ],
+                        [
+                            -80.249999999999986,
+                            36.479999899999996
+                        ],
+                        [
+                            -80.379999999999981,
+                            36.399999999999999
+                        ],
+                        [
+                            -80.629999999999995,
+                            36.549999999999997
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b805fd13e2c4ccebb4c76f2bfaca939590df5440.001.1",
+                "@type": "wx:Alert",
+                "id": "urn:oid:2.49.0.1.840.0.b805fd13e2c4ccebb4c76f2bfaca939590df5440.001.1",
+                "areaDesc": "Surry; Stokes; Patrick",
+                "geocode": {
+                    "SAME": [
+                        "037171",
+                        "037169",
+                        "051141"
+                    ],
+                    "UGC": [
+                        "NCZ003",
+                        "NCZ004",
+                        "VAZ032"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/forecast/NCZ003",
+                    "https://api.weather.gov/zones/forecast/NCZ004",
+                    "https://api.weather.gov/zones/forecast/VAZ032"
+                ],
+                "references": [],
+                "sent": "2022-08-08T19:28:00-04:00",
+                "effective": "2022-08-08T19:28:00-04:00",
+                "onset": "2022-08-08T19:28:00-04:00",
+                "expires": "2022-08-08T20:15:00-04:00",
+                "ends": null,
+                "status": "Actual",
+                "messageType": "Alert",
+                "category": "Met",
+                "severity": "Moderate",
+                "certainty": "Observed",
+                "urgency": "Expected",
+                "event": "Special Weather Statement",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Blacksburg VA",
+                "headline": "Special Weather Statement issued August 8 at 7:28PM EDT by NWS Blacksburg VA",
+                "description": "At 727 PM EDT, Doppler radar was tracking strong thunderstorms along\na line extending from near Ararat VA to near Francisco NC. These\nstorms were drifting slowly eastward.\n\nHAZARD...Winds in excess of 30 mph. Pea to dime-sized hail. Very\nheavy rainfall.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects. Very heavy rainfall may result in\nlocalized flooding.\n\nLocations impacted include...\nArarat...\nFrancisco...\nWoodville...\nCollinstown...\nand Westfield.",
+                "instruction": "If outdoors, consider seeking shelter inside a building.\n\nLocally heavy rain will quickly reduce visibility and result in\nponding of water on roadways, standing water in low lying areas, and\nminor flooding of creeks, streams, and areas of poor drainage.\nDrivers are urged to slow down and use extra caution to avoid\nhydroplaning.\n\nThese storms may intensify, so be certain to monitor local radio\nstations and available television stations for additional information\nand possible warnings from the National Weather Service.",
+                "response": "Execute",
+                "parameters": {
+                    "AWIPSidentifier": [
+                        "SPSRNK"
+                    ],
+                    "WMOidentifier": [
+                        "WWUS81 KRNK 082328"
+                    ],
+                    "NWSheadline": [
+                        "Strong thunderstorms will impact portions of northeastern Surry, northwestern Stokes and southwestern Patrick Counties through 815 PM EDT"
+                    ],
+                    "eventMotionDescription": [
+                        "2022-08-08T23:27:00-00:00...storm...170DEG...2KT...36.56,-80.56 36.45,-80.38"
+                    ],
+                    "maxWindGust": [
+                        "30 MPH"
+                    ],
+                    "maxHailSize": [
+                        "0.00"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "EAS",
+                        "NWEM",
+                        "CMAS"
+                    ],
+                    "EAS-ORG": [
+                        "WXR"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a3163d4ff1effd24cf24f13f6d10d5fb09ef6f98.001.1",
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -78.810000000000002,
+                            36.090000000000003
+                        ],
+                        [
+                            -78.790000000000006,
+                            36.090000000000003
+                        ],
+                        [
+                            -78.780000000000001,
+                            36.07
+                        ],
+                        [
+                            -78.75,
+                            36.07
+                        ],
+                        [
+                            -78.75,
+                            36.030000000000001
+                        ],
+                        [
+                            -78.739999999999995,
+                            36.020000000000003
+                        ],
+                        [
+                            -78.719999999999999,
+                            36.030000000000001
+                        ],
+                        [
+                            -78.719999999999999,
+                            36.020000000000003
+                        ],
+                        [
+                            -78.890000000000001,
+                            35.950000000000003
+                        ],
+                        [
+                            -78.950000000000003,
+                            36
+                        ],
+                        [
+                            -78.810000000000002,
+                            36.119999999999997
+                        ],
+                        [
+                            -78.810000000000002,
+                            36.090000000000003
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.a3163d4ff1effd24cf24f13f6d10d5fb09ef6f98.001.1",
+                "@type": "wx:Alert",
+                "id": "urn:oid:2.49.0.1.840.0.a3163d4ff1effd24cf24f13f6d10d5fb09ef6f98.001.1",
+                "areaDesc": "Durham",
+                "geocode": {
+                    "SAME": [
+                        "037063"
+                    ],
+                    "UGC": [
+                        "NCZ025"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/forecast/NCZ025"
+                ],
+                "references": [],
+                "sent": "2022-08-08T19:26:00-04:00",
+                "effective": "2022-08-08T19:26:00-04:00",
+                "onset": "2022-08-08T19:26:00-04:00",
+                "expires": "2022-08-08T20:30:00-04:00",
+                "ends": null,
+                "status": "Actual",
+                "messageType": "Alert",
+                "category": "Met",
+                "severity": "Moderate",
+                "certainty": "Observed",
+                "urgency": "Expected",
+                "event": "Special Weather Statement",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Raleigh NC",
+                "headline": "Special Weather Statement issued August 8 at 7:26PM EDT by NWS Raleigh NC",
+                "description": "At 725 PM EDT, Doppler radar was tracking a slow moving thunderstorm\nnear Butner, or 8 miles northeast of Durham, moving northeast at 5\nmph.\n\nHAZARD...Heavy rain may lead to isolated flooding in poor drainage\nlocations.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nDurham, Gorman and Falls Lake.",
+                "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
+                "response": "Execute",
+                "parameters": {
+                    "AWIPSidentifier": [
+                        "SPSRAH"
+                    ],
+                    "WMOidentifier": [
+                        "WWUS82 KRAH 082326"
+                    ],
+                    "NWSheadline": [
+                        "A slow moving thunderstorm will impact portions of central Durham County through 830 PM EDT"
+                    ],
+                    "eventMotionDescription": [
+                        "2022-08-08T23:25:00-00:00...storm...241DEG...5KT...36.04,-78.81"
+                    ],
+                    "maxWindGust": [
+                        "30 MPH"
+                    ],
+                    "maxHailSize": [
+                        "0.00"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "EAS",
+                        "NWEM",
+                        "CMAS"
+                    ],
+                    "EAS-ORG": [
+                        "WXR"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.230dc239c685c4488757cb1ca653585736ac4ec5.001.1",
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -78.109999999999999,
+                            36.210000000000001
+                        ],
+                        [
+                            -78.010000000000005,
+                            36.210000000000001
+                        ],
+                        [
+                            -78.010000000000005,
+                            36.200000000000003
+                        ],
+                        [
+                            -78.180000000000007,
+                            35.950000000000003
+                        ],
+                        [
+                            -78.280000000000001,
+                            36.150000000000006
+                        ],
+                        [
+                            -78.129999999999995,
+                            36.229999900000003
+                        ],
+                        [
+                            -78.109999999999999,
+                            36.210000000000001
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.230dc239c685c4488757cb1ca653585736ac4ec5.001.1",
+                "@type": "wx:Alert",
+                "id": "urn:oid:2.49.0.1.840.0.230dc239c685c4488757cb1ca653585736ac4ec5.001.1",
+                "areaDesc": "Franklin",
+                "geocode": {
+                    "SAME": [
+                        "037069"
+                    ],
+                    "UGC": [
+                        "NCZ026"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/forecast/NCZ026"
+                ],
+                "references": [],
+                "sent": "2022-08-08T19:22:00-04:00",
+                "effective": "2022-08-08T19:22:00-04:00",
+                "onset": "2022-08-08T19:22:00-04:00",
+                "expires": "2022-08-08T20:15:00-04:00",
+                "ends": null,
+                "status": "Actual",
+                "messageType": "Alert",
+                "category": "Met",
+                "severity": "Moderate",
+                "certainty": "Observed",
+                "urgency": "Expected",
+                "event": "Special Weather Statement",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Raleigh NC",
+                "headline": "Special Weather Statement issued August 8 at 7:22PM EDT by NWS Raleigh NC",
+                "description": "At 720 PM EDT, Doppler radar was tracking a strong thunderstorm 8\nmiles east of Louisburg, moving northeast at 10 mph.\n\nHAZARD...Heavy rain may lead to isolated flooding in poor drainage\nlocations.\n\nSOURCE...Radar indicated.\n\nIMPACT...Gusty winds could knock down tree limbs and blow around\nunsecured objects.\n\nLocations impacted include...\nCenterville.",
+                "instruction": "If outdoors, consider seeking shelter inside a building.\n\nTorrential rainfall is also occurring with this storm and may lead to\nlocalized flooding. Do not drive your vehicle through flooded\nroadways.",
+                "response": "Execute",
+                "parameters": {
+                    "AWIPSidentifier": [
+                        "SPSRAH"
+                    ],
+                    "WMOidentifier": [
+                        "WWUS82 KRAH 082322"
+                    ],
+                    "NWSheadline": [
+                        "A slow moving thunderstorm will impact portions of northeastern Franklin County through 815 PM EDT"
+                    ],
+                    "eventMotionDescription": [
+                        "2022-08-08T23:20:00-00:00...storm...245DEG...7KT...36.11,-78.15"
+                    ],
+                    "maxWindGust": [
+                        "30 MPH"
+                    ],
+                    "maxHailSize": [
+                        "0.00"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "EAS",
+                        "NWEM",
+                        "CMAS"
+                    ],
+                    "EAS-ORG": [
+                        "WXR"
+                    ]
+                }
+            }
+        },
+        {
+            "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9403c6599bf7473c4dcd5395ca32ea1c0db26bc7.001.1",
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -78.590000000000003,
+                            35.909999900000003
+                        ],
+                        [
+                            -78.350000000000009,
+                            35.909999900000003
+                        ],
+                        [
+                            -78.390000000000015,
+                            35.760000000000005
+                        ],
+                        [
+                            -78.600000000000009,
+                            35.760000000000005
+                        ],
+                        [
+                            -78.590000000000003,
+                            35.909999900000003
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9403c6599bf7473c4dcd5395ca32ea1c0db26bc7.001.1",
+                "@type": "wx:Alert",
+                "id": "urn:oid:2.49.0.1.840.0.9403c6599bf7473c4dcd5395ca32ea1c0db26bc7.001.1",
+                "areaDesc": "Wake, NC",
+                "geocode": {
+                    "SAME": [
+                        "037183"
+                    ],
+                    "UGC": [
+                        "NCC183"
+                    ]
+                },
+                "affectedZones": [
+                    "https://api.weather.gov/zones/county/NCC183"
+                ],
+                "references": [],
+                "sent": "2022-08-08T18:57:00-04:00",
+                "effective": "2022-08-08T18:57:00-04:00",
+                "onset": "2022-08-08T18:57:00-04:00",
+                "expires": "2022-08-08T21:00:00-04:00",
+                "ends": "2022-08-08T21:00:00-04:00",
+                "status": "Actual",
+                "messageType": "Alert",
+                "category": "Met",
+                "severity": "Minor",
+                "certainty": "Likely",
+                "urgency": "Expected",
+                "event": "Flood Advisory",
+                "sender": "w-nws.webmaster@noaa.gov",
+                "senderName": "NWS Raleigh NC",
+                "headline": "Flood Advisory issued August 8 at 6:57PM EDT until August 8 at 9:00PM EDT by NWS Raleigh NC",
+                "description": "* WHAT...Urban and small stream flooding caused by excessive\nrainfall is expected.\n\n* WHERE...A portion of central North Carolina, including the\nfollowing county, Wake.\n\n* WHEN...Until 900 PM EDT.\n\n* IMPACTS...Minor flooding in low-lying and poor drainage areas.\n\n* ADDITIONAL DETAILS...\n- At 657 PM EDT, Doppler radar indicated heavy rain due to\nnearly stationary thunderstorms. This will cause urban and\nsmall stream flooding. Between 1 and 2 inches of rain have\nfallen.\n- Additional rainfall amounts of 0.5 to 1 inch are expected\nover the area. This additional rain will result in minor\nflooding.\n- Some locations that will experience flooding include...\nRaleigh and Knightdale.\n- http://www.weather.gov/safety/flood",
+                "instruction": "Turn around, don't drown when encountering flooded roads. Most flood\ndeaths occur in vehicles.",
+                "response": "Avoid",
+                "parameters": {
+                    "AWIPSidentifier": [
+                        "FLSRAH"
+                    ],
+                    "WMOidentifier": [
+                        "WGUS82 KRAH 082257"
+                    ],
+                    "NWSheadline": [
+                        "FLOOD ADVISORY IN EFFECT UNTIL 9 PM EDT THIS EVENING"
+                    ],
+                    "BLOCKCHANNEL": [
+                        "EAS",
+                        "NWEM",
+                        "CMAS"
+                    ],
+                    "VTEC": [
+                        "/O.NEW.KRAH.FA.Y.0103.220808T2257Z-220809T0100Z/"
+                    ],
+                    "eventEndingTime": [
+                        "2022-08-09T01:00:00+00:00"
+                    ]
+                }
+            }
+        }
+    ],
+    "title": "current watches, warnings, and advisories for North Carolina",
+    "updated": "2022-08-09T00:00:00+00:00"
+}
