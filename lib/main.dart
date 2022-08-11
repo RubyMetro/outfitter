@@ -19,8 +19,6 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.*/
 
 import 'package:flutter/material.dart';
-import 'api/Forecast.dart';
-import 'api.dart';
 
 void main() {
   print(

@@ -12,24 +12,23 @@ class Forecast {
   Forecast({this.geometry, this.properties, this.type});
 
   Forecast.fromJson(Map<String, dynamic> json) {
-    geometry = json['geometry'] != null
-        ? new Geometry.fromJson(json['geometry'])
-        : null;
+    geometry =
+        json['geometry'] != null ? Geometry.fromJson(json['geometry']) : null;
     properties = json['properties'] != null
-        ? new Properties.fromJson(json['properties'])
+        ? Properties.fromJson(json['properties'])
         : null;
     type = json['type'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.geometry != null) {
-      data['geometry'] = this.geometry!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (geometry != null) {
+      data['geometry'] = geometry!.toJson();
     }
-    if (this.properties != null) {
-      data['properties'] = this.properties!.toJson();
+    if (properties != null) {
+      data['properties'] = properties!.toJson();
     }
-    data['type'] = this.type;
+    data['type'] = type;
     return data;
   }
 }
@@ -46,9 +45,9 @@ class Geometry {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['coordinates'] = this.coordinates;
-    data['type'] = this.type;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['coordinates'] = coordinates;
+    data['type'] = type;
     return data;
   }
 }
@@ -60,22 +59,22 @@ class Properties {
   Properties({this.meta, this.timeseries});
 
   Properties.fromJson(Map<String, dynamic> json) {
-    meta = json['meta'] != null ? new Meta.fromJson(json['meta']) : null;
+    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
     if (json['timeseries'] != null) {
       timeseries = <Timeseries>[];
       json['timeseries'].forEach((v) {
-        timeseries!.add(new Timeseries.fromJson(v));
+        timeseries!.add(Timeseries.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.meta != null) {
-      data['meta'] = this.meta!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (meta != null) {
+      data['meta'] = meta!.toJson();
     }
-    if (this.timeseries != null) {
-      data['timeseries'] = this.timeseries!.map((v) => v.toJson()).toList();
+    if (timeseries != null) {
+      data['timeseries'] = timeseries!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -88,16 +87,16 @@ class Meta {
   Meta({this.units, this.updatedAt});
 
   Meta.fromJson(Map<String, dynamic> json) {
-    units = json['units'] != null ? new Units.fromJson(json['units']) : null;
+    units = json['units'] != null ? Units.fromJson(json['units']) : null;
     updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.units != null) {
-      data['units'] = this.units!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (units != null) {
+      data['units'] = units!.toJson();
     }
-    data['updated_at'] = this.updatedAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }
@@ -170,27 +169,27 @@ class Units {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['air_pressure_at_sea_level'] = this.airPressureAtSeaLevel;
-    data['air_temperature'] = this.airTemperature;
-    data['air_temperature_max'] = this.airTemperatureMax;
-    data['air_temperature_min'] = this.airTemperatureMin;
-    data['cloud_area_fraction'] = this.cloudAreaFraction;
-    data['cloud_area_fraction_high'] = this.cloudAreaFractionHigh;
-    data['cloud_area_fraction_low'] = this.cloudAreaFractionLow;
-    data['cloud_area_fraction_medium'] = this.cloudAreaFractionMedium;
-    data['dew_point_temperature'] = this.dewPointTemperature;
-    data['fog_area_fraction'] = this.fogAreaFraction;
-    data['precipitation_amount'] = this.precipitationAmount;
-    data['precipitation_amount_max'] = this.precipitationAmountMax;
-    data['precipitation_amount_min'] = this.precipitationAmountMin;
-    data['probability_of_precipitation'] = this.probabilityOfPrecipitation;
-    data['probability_of_thunder'] = this.probabilityOfThunder;
-    data['relative_humidity'] = this.relativeHumidity;
-    data['ultraviolet_index_clear_sky_max'] = this.ultravioletIndexClearSkyMax;
-    data['wind_from_direction'] = this.windFromDirection;
-    data['wind_speed'] = this.windSpeed;
-    data['wind_speed_of_gust'] = this.windSpeedOfGust;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['air_pressure_at_sea_level'] = airPressureAtSeaLevel;
+    data['air_temperature'] = airTemperature;
+    data['air_temperature_max'] = airTemperatureMax;
+    data['air_temperature_min'] = airTemperatureMin;
+    data['cloud_area_fraction'] = cloudAreaFraction;
+    data['cloud_area_fraction_high'] = cloudAreaFractionHigh;
+    data['cloud_area_fraction_low'] = cloudAreaFractionLow;
+    data['cloud_area_fraction_medium'] = cloudAreaFractionMedium;
+    data['dew_point_temperature'] = dewPointTemperature;
+    data['fog_area_fraction'] = fogAreaFraction;
+    data['precipitation_amount'] = precipitationAmount;
+    data['precipitation_amount_max'] = precipitationAmountMax;
+    data['precipitation_amount_min'] = precipitationAmountMin;
+    data['probability_of_precipitation'] = probabilityOfPrecipitation;
+    data['probability_of_thunder'] = probabilityOfThunder;
+    data['relative_humidity'] = relativeHumidity;
+    data['ultraviolet_index_clear_sky_max'] = ultravioletIndexClearSkyMax;
+    data['wind_from_direction'] = windFromDirection;
+    data['wind_speed'] = windSpeed;
+    data['wind_speed_of_gust'] = windSpeedOfGust;
     return data;
   }
 }
@@ -202,16 +201,16 @@ class Timeseries {
   Timeseries({this.data, this.time});
 
   Timeseries.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
     time = json['time'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['time'] = this.time;
+    data['time'] = time;
     return data;
   }
 }
@@ -226,31 +225,31 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     instant =
-        json['instant'] != null ? new Instant.fromJson(json['instant']) : null;
+        json['instant'] != null ? Instant.fromJson(json['instant']) : null;
     next12Hours = json['next_12_hours'] != null
-        ? new Next12Hours.fromJson(json['next_12_hours'])
+        ? Next12Hours.fromJson(json['next_12_hours'])
         : null;
     next1Hours = json['next_1_hours'] != null
-        ? new Next12Hours.fromJson(json['next_1_hours'])
+        ? Next12Hours.fromJson(json['next_1_hours'])
         : null;
     next6Hours = json['next_6_hours'] != null
-        ? new Next12Hours.fromJson(json['next_6_hours'])
+        ? Next12Hours.fromJson(json['next_6_hours'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.instant != null) {
-      data['instant'] = this.instant!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (instant != null) {
+      data['instant'] = instant!.toJson();
     }
-    if (this.next12Hours != null) {
-      data['next_12_hours'] = this.next12Hours!.toJson();
+    if (next12Hours != null) {
+      data['next_12_hours'] = next12Hours!.toJson();
     }
-    if (this.next1Hours != null) {
-      data['next_1_hours'] = this.next1Hours!.toJson();
+    if (next1Hours != null) {
+      data['next_1_hours'] = next1Hours!.toJson();
     }
-    if (this.next6Hours != null) {
-      data['next_6_hours'] = this.next6Hours!.toJson();
+    if (next6Hours != null) {
+      data['next_6_hours'] = next6Hours!.toJson();
     }
     return data;
   }
@@ -263,13 +262,13 @@ class Instant {
 
   Instant.fromJson(Map<String, dynamic> json) {
     details =
-        json['details'] != null ? new Details.fromJson(json['details']) : null;
+        json['details'] != null ? Details.fromJson(json['details']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.details != null) {
-      data['details'] = this.details!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (details != null) {
+      data['details'] = details!.toJson();
     }
     return data;
   }
@@ -319,19 +318,19 @@ class Details {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['air_pressure_at_sea_level'] = this.airPressureAtSeaLevel;
-    data['air_temperature'] = this.airTemperature;
-    data['cloud_area_fraction'] = this.cloudAreaFraction;
-    data['cloud_area_fraction_high'] = this.cloudAreaFractionHigh;
-    data['cloud_area_fraction_low'] = this.cloudAreaFractionLow;
-    data['cloud_area_fraction_medium'] = this.cloudAreaFractionMedium;
-    data['dew_point_temperature'] = this.dewPointTemperature;
-    data['fog_area_fraction'] = this.fogAreaFraction;
-    data['relative_humidity'] = this.relativeHumidity;
-    data['wind_from_direction'] = this.windFromDirection;
-    data['wind_speed'] = this.windSpeed;
-    data['wind_speed_of_gust'] = this.windSpeedOfGust;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['air_pressure_at_sea_level'] = airPressureAtSeaLevel;
+    data['air_temperature'] = airTemperature;
+    data['cloud_area_fraction'] = cloudAreaFraction;
+    data['cloud_area_fraction_high'] = cloudAreaFractionHigh;
+    data['cloud_area_fraction_low'] = cloudAreaFractionLow;
+    data['cloud_area_fraction_medium'] = cloudAreaFractionMedium;
+    data['dew_point_temperature'] = dewPointTemperature;
+    data['fog_area_fraction'] = fogAreaFraction;
+    data['relative_humidity'] = relativeHumidity;
+    data['wind_from_direction'] = windFromDirection;
+    data['wind_speed'] = windSpeed;
+    data['wind_speed_of_gust'] = windSpeedOfGust;
     return data;
   }
 }
@@ -344,24 +343,24 @@ class Next12Hours {
 
   Next12Hours.fromJson(Map<String, dynamic> json) {
     details =
-        json['details'] != null ? new Details.fromJson(json['details']) : null;
+        json['details'] != null ? Details.fromJson(json['details']) : null;
     summary =
-        json['summary'] != null ? new Summary.fromJson(json['summary']) : null;
+        json['summary'] != null ? Summary.fromJson(json['summary']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.details != null) {
-      data['details'] = this.details!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (details != null) {
+      data['details'] = details!.toJson();
     }
-    if (this.summary != null) {
-      data['summary'] = this.summary!.toJson();
+    if (summary != null) {
+      data['summary'] = summary!.toJson();
     }
     return data;
   }
 }
 
-class lateDetails {
+class LateDetails {
   double? airTemperatureMax;
   double? airTemperatureMin;
   double? precipitationAmount;
@@ -371,7 +370,7 @@ class lateDetails {
   double? probabilityOfThunder;
   int? ultravioletIndexClearSkyMax;
 
-  lateDetails(
+  LateDetails(
       {this.airTemperatureMax,
       this.airTemperatureMin,
       this.precipitationAmount,
@@ -381,7 +380,7 @@ class lateDetails {
       this.probabilityOfThunder,
       this.ultravioletIndexClearSkyMax});
 
-  lateDetails.fromJson(Map<String, dynamic> json) {
+  LateDetails.fromJson(Map<String, dynamic> json) {
     airTemperatureMax = json['air_temperature_max'];
     airTemperatureMin = json['air_temperature_min'];
     precipitationAmount = json['precipitation_amount'];
@@ -393,15 +392,15 @@ class lateDetails {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['air_temperature_max'] = this.airTemperatureMax;
-    data['air_temperature_min'] = this.airTemperatureMin;
-    data['precipitation_amount'] = this.precipitationAmount;
-    data['precipitation_amount_max'] = this.precipitationAmountMax;
-    data['precipitation_amount_min'] = this.precipitationAmountMin;
-    data['probability_of_precipitation'] = this.probabilityOfPrecipitation;
-    data['probability_of_thunder'] = this.probabilityOfThunder;
-    data['ultraviolet_index_clear_sky_max'] = this.ultravioletIndexClearSkyMax;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['air_temperature_max'] = airTemperatureMax;
+    data['air_temperature_min'] = airTemperatureMin;
+    data['precipitation_amount'] = precipitationAmount;
+    data['precipitation_amount_max'] = precipitationAmountMax;
+    data['precipitation_amount_min'] = precipitationAmountMin;
+    data['probability_of_precipitation'] = probabilityOfPrecipitation;
+    data['probability_of_thunder'] = probabilityOfThunder;
+    data['ultraviolet_index_clear_sky_max'] = ultravioletIndexClearSkyMax;
     return data;
   }
 }
@@ -416,8 +415,8 @@ class Summary {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['symbol_code'] = this.symbolCode;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['symbol_code'] = symbolCode;
     return data;
   }
 }
