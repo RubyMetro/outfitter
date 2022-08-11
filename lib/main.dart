@@ -19,7 +19,7 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.*/
 
 import 'package:flutter/material.dart';
-import 'api/alerts.dart';
+import 'api/Alerts.dart';
 import 'fetchApi.dart';
 
 void main() {
@@ -82,28 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_loading ? 'loading' : "alerts for this area fetched"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ListView.builder(
-              itemCount: null == _alerts.features ? 0 : _alerts.features.length,
-              itemBuilder: ((context, index) {
-                Feature feature = _alerts.features[index];
-                _alerts.features[index];
-                return ListTile(
-                  title: Text(feature.properties.event),
-                );
-              }),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+        title: Text(_loading ? 'loading' : "type: ${_alerts.type}"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,

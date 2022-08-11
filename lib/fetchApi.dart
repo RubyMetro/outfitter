@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'api/alerts.dart';
+import 'api/Alerts.dart';
 
 class API {
   static Future<Alerts> getAlerts() async {
