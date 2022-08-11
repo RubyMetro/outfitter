@@ -1,12 +1,12 @@
-import 'dart:convert';
 import 'dart:async';
-import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'api/Alerts.dart';
+import 'api/alerts.dart';
+
+const String area = 'NC';
 
 class API {
   static Future<Alerts> getAlerts() async {
-    const String url = 'https://api.weather.gov/alerts/active?area=NC';
+    const String url = 'https://api.weather.gov/alerts/active?area=$area';
     try {
       final response = await http.get(Uri.parse(url));
       if (200 == response.statusCode) {

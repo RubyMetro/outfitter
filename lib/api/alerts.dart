@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 Alerts alertsFromJson(String str) => Alerts.fromJson(json.decode(str));
@@ -21,7 +23,7 @@ class Alerts {
     if (json['features'] != null) {
       features = <Features>[];
       json['features'].forEach((v) {
-        features!.add(new Features.fromJson(v));
+        features.add(Features.fromJson(v));
       });
     }
     title = json['title'];
@@ -32,15 +34,13 @@ class Alerts {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['type'] = this.type;
-    if (this.features != null) {
-      data['features'] = this.features!.map((v) => v.toJson()).toList();
-    }
-    data['title'] = this.title;
-    data['updated'] = this.updated;
-    if (this.pagination != null) {
-      data['pagination'] = this.pagination!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['type'] = type;
+    data['features'] = features.map((v) => v.toJson()).toList();
+    data['title'] = title;
+    data['updated'] = updated;
+    if (pagination != null) {
+      data['pagination'] = pagination!.toJson();
     }
     return data;
   }
@@ -57,16 +57,16 @@ class Features {
     id = json['id'];
     type = json['type'];
     properties = json['properties'] != null
-        ? new Properties.fromJson(json['properties'])
+        ? Properties.fromJson(json['properties'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['type'] = this.type;
-    if (this.properties != null) {
-      data['properties'] = this.properties!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['type'] = type;
+    if (properties != null) {
+      data['properties'] = properties!.toJson();
     }
     return data;
   }
@@ -126,12 +126,12 @@ class Properties {
     id = json['id'];
     areaDesc = json['areaDesc'];
     geocode =
-        json['geocode'] != null ? new Geocode.fromJson(json['geocode']) : null;
+        json['geocode'] != null ? Geocode.fromJson(json['geocode']) : null;
     affectedZones = json['affectedZones'].cast<String>();
     if (json['references'] != null) {
       references = <References>[];
       json['references'].forEach((v) {
-        references!.add(new References.fromJson(v));
+        references!.add(References.fromJson(v));
       });
     }
     sent = json['sent'];
@@ -155,34 +155,34 @@ class Properties {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['areaDesc'] = this.areaDesc;
-    if (this.geocode != null) {
-      data['geocode'] = this.geocode!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['areaDesc'] = areaDesc;
+    if (geocode != null) {
+      data['geocode'] = geocode!.toJson();
     }
-    data['affectedZones'] = this.affectedZones;
-    if (this.references != null) {
-      data['references'] = this.references!.map((v) => v.toJson()).toList();
+    data['affectedZones'] = affectedZones;
+    if (references != null) {
+      data['references'] = references!.map((v) => v.toJson()).toList();
     }
-    data['sent'] = this.sent;
-    data['effective'] = this.effective;
-    data['onset'] = this.onset;
-    data['expires'] = this.expires;
-    data['ends'] = this.ends;
-    data['status'] = this.status;
-    data['messageType'] = this.messageType;
-    data['category'] = this.category;
-    data['severity'] = this.severity;
-    data['certainty'] = this.certainty;
-    data['urgency'] = this.urgency;
-    data['event'] = this.event;
-    data['sender'] = this.sender;
-    data['senderName'] = this.senderName;
-    data['headline'] = this.headline;
-    data['description'] = this.description;
-    data['instruction'] = this.instruction;
-    data['response'] = this.response;
+    data['sent'] = sent;
+    data['effective'] = effective;
+    data['onset'] = onset;
+    data['expires'] = expires;
+    data['ends'] = ends;
+    data['status'] = status;
+    data['messageType'] = messageType;
+    data['category'] = category;
+    data['severity'] = severity;
+    data['certainty'] = certainty;
+    data['urgency'] = urgency;
+    data['event'] = event;
+    data['sender'] = sender;
+    data['senderName'] = senderName;
+    data['headline'] = headline;
+    data['description'] = description;
+    data['instruction'] = instruction;
+    data['response'] = response;
     return data;
   }
 }
@@ -199,9 +199,9 @@ class Geocode {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['UGC'] = this.uGC;
-    data['SAME'] = this.sAME;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['UGC'] = uGC;
+    data['SAME'] = sAME;
     return data;
   }
 }
@@ -222,11 +222,11 @@ class References {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['@id'] = this.id;
-    data['identifier'] = this.identifier;
-    data['sender'] = this.sender;
-    data['sent'] = this.sent;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['@id'] = id;
+    data['identifier'] = identifier;
+    data['sender'] = sender;
+    data['sent'] = sent;
     return data;
   }
 }
@@ -241,8 +241,8 @@ class Pagination {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['next'] = this.next;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['next'] = next;
     return data;
   }
 }
