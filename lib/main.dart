@@ -19,8 +19,8 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.*/
 
 import 'package:flutter/material.dart';
-import 'api/Alerts.dart';
-import 'fetchApi.dart';
+import 'api/Forecast.dart';
+import 'api.dart';
 
 void main() {
   print(
@@ -56,33 +56,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  late Alerts _alerts;
   late bool _loading;
 
   @override
   void initState() {
     super.initState();
     _loading = true;
-    API.getAlerts().then((alerts) {
-      setState(() {
-        _alerts = alerts;
-        _loading = false;
-      });
-    });
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_loading ? 'loading' : _alerts.title),
+        title: Text(_loading ? 'loading' : "loaded"),
       ),
     );
   }
