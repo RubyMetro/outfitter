@@ -102,210 +102,223 @@ class _MyHomePageState extends State<MyHomePage> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: night,
+            colors: day,
           ),
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Column(
+          body: ListView(
             children: [
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: FittedBox(
-                    fit: BoxFit.contain,
-                    child: Text(
-                      "Welcome,\nJane.",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 48,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.white,
-                      ),
-                    ),
+              Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(10),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                child: Container(
-                  width: double.infinity,
-                  constraints:
-                      const BoxConstraints(maxHeight: 800, minHeight: 100),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30.0),
-                    ),
-                    color: Color.fromARGB(43, 255, 255, 255),
-                  ),
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: [
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          maxHeight: 300,
-                        ),
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 5,
-                            ),
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                          ),
-                          child: ListView(
-                            shrinkWrap: true,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 5,
-                                      ),
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                    ),
-                                    height: 100,
-                                    width: 100,
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: FittedBox(
-                                        fit: BoxFit.contain,
-                                        child: Text(
-                                          "Top Placeholder",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 5,
-                                      ),
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                    ),
-                                    height: 100,
-                                    width: 100,
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: FittedBox(
-                                        fit: BoxFit.contain,
-                                        child: Text(
-                                          "bottom Placeholder",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 5,
-                                      ),
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                    ),
-                                    height: 100,
-                                    width: 100,
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: FittedBox(
-                                        fit: BoxFit.contain,
-                                        child: Text(
-                                          "Coat Placeholder",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 5,
-                                      ),
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                    ),
-                                    height: 100,
-                                    width: 100,
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: FittedBox(
-                                        fit: BoxFit.contain,
-                                        child: Text(
-                                          "Sunscreen\nPlaceholder",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.white,
-                                        width: 5,
-                                      ),
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                    ),
-                                    height: 100,
-                                    width: 100,
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: FittedBox(
-                                        fit: BoxFit.contain,
-                                        child: Text(
-                                          "Umbrella\nPlaceholder",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        child: Text(
+                          "Welcome,\nJane.",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontSize: 48,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
                           ),
                         ),
                       ),
-                      //inside of first card
-                    ],
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Container(
+                      width: double.infinity,
+                      constraints:
+                          const BoxConstraints(maxHeight: 800, minHeight: 100),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(30.0),
+                        ),
+                        color: Color.fromARGB(43, 255, 255, 255),
+                      ),
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxHeight: 300,
+                            ),
+                            child: Container(
+                              margin: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 5,
+                                ),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(30),
+                                ),
+                              ),
+                              child: ListView(
+                                shrinkWrap: true,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(5),
+                                        child: ClipRRect(
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(20),
+                                          ),
+                                          child: Container(
+                                            constraints: const BoxConstraints(
+                                              maxHeight: 200,
+                                              maxWidth: 200,
+                                            ),
+                                            child: const Image(
+                                              image: AssetImage(
+                                                  'images/placeholder.jpg'),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.white,
+                                            width: 5,
+                                          ),
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(20),
+                                          ),
+                                        ),
+                                        height: 100,
+                                        width: 100,
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: FittedBox(
+                                            fit: BoxFit.contain,
+                                            child: Text(
+                                              "bottom Placeholder",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.white,
+                                            width: 5,
+                                          ),
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(20),
+                                          ),
+                                        ),
+                                        height: 100,
+                                        width: 100,
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: FittedBox(
+                                            fit: BoxFit.contain,
+                                            child: Text(
+                                              "Coat Placeholder",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Container(
+                                        margin: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.white,
+                                            width: 5,
+                                          ),
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(20),
+                                          ),
+                                        ),
+                                        height: 100,
+                                        width: 100,
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: FittedBox(
+                                            fit: BoxFit.contain,
+                                            child: Text(
+                                              "Sunscreen\nPlaceholder",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Colors.white,
+                                            width: 5,
+                                          ),
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(20),
+                                          ),
+                                        ),
+                                        height: 100,
+                                        width: 100,
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: FittedBox(
+                                            fit: BoxFit.contain,
+                                            child: Text(
+                                              "Umbrella\nPlaceholder",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 600,
+                            margin: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 5,
+                              ),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(30),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
