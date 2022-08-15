@@ -226,7 +226,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                     color: Color.fromARGB(55, 0, 0, 0),
                                   ),
-                                  height: 100,
+                                  constraints:
+                                      const BoxConstraints(maxHeight: 200),
                                   clipBehavior: Clip.hardEdge,
                                   child: const Image(
                                     image: AssetImage('images/Sunscreen_.png'),
@@ -254,168 +255,223 @@ class _MyHomePageState extends State<MyHomePage> {
                               color: Color.fromARGB(55, 0, 0, 0),
                             ),
                             width: double.infinity,
+                            constraints: const BoxConstraints(maxHeight: 200),
                             clipBehavior: Clip.hardEdge,
                             child: _loading
-                                ? const Center(
-                                    child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 5,
-                                        color: Colors.white,
+                                ? const SizedBox(
+                                    height: 200,
+                                    child: Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 5,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   )
-                                : Center(
-                                    child: Column(
-                                      children: [
-                                        const SizedBox(height: 10),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            Text(
-                                              "${_forecast.currentForecast?.airTemperature}",
-                                              style: const TextStyle(
-                                                fontSize: 30,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w900,
+                                : SingleChildScrollView(
+                                    scrollDirection: Axis.vertical,
+                                    child: Center(
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              const SizedBox(
+                                                width: 20,
                                               ),
-                                            ),
-                                            const Spacer(),
-                                            Row(
-                                              children: const [
-                                                Icon(
-                                                  Icons.thermostat_outlined,
+                                              Text(
+                                                "${_forecast.currentForecast?.airTemperature}",
+                                                style: const TextStyle(
+                                                  fontSize: 30,
                                                   color: Colors.white,
+                                                  fontWeight: FontWeight.w900,
                                                 ),
-                                                Text(
-                                                  "C°",
-                                                  style: TextStyle(
-                                                    fontSize: 30,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.w900,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            Text(
-                                              "${_forecast.currentForecast?.relativeHumidity}",
-                                              style: const TextStyle(
-                                                fontSize: 30,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w900,
                                               ),
-                                            ),
-                                            const Spacer(),
-                                            Row(
-                                              children: const [
-                                                Icon(
-                                                  Icons.water_drop_outlined,
+                                              const Spacer(),
+                                              Row(
+                                                children: const [
+                                                  Text(
+                                                    "C°",
+                                                    style: TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w900,
+                                                    ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.thermostat_outlined,
+                                                    color: Colors.white,
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                              Text(
+                                                "${_forecast.currentForecast?.relativeHumidity}",
+                                                style: const TextStyle(
+                                                  fontSize: 30,
                                                   color: Colors.white,
+                                                  fontWeight: FontWeight.w900,
                                                 ),
-                                                Text(
-                                                  "%",
-                                                  style: TextStyle(
-                                                    fontSize: 30,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.w900,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            Text(
-                                              "${_forecast.oneHourForecast?.precipitationAmount}",
-                                              style: const TextStyle(
-                                                fontSize: 30,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w900,
                                               ),
-                                            ),
-                                            const Spacer(),
-                                            Row(
-                                              children: const [
-                                                Icon(
-                                                  Icons.shower_outlined,
+                                              const Spacer(),
+                                              Row(
+                                                children: const [
+                                                  Text(
+                                                    "%",
+                                                    style: TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w900,
+                                                    ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.water_drop_outlined,
+                                                    color: Colors.white,
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                              Text(
+                                                "${_forecast.oneHourForecast?.precipitationAmount}",
+                                                style: const TextStyle(
+                                                  fontSize: 30,
                                                   color: Colors.white,
+                                                  fontWeight: FontWeight.w900,
                                                 ),
-                                                Text(
-                                                  "%",
-                                                  style: TextStyle(
-                                                    fontSize: 30,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.w900,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            Text(
-                                              "${_forecast.currentForecast?.ultravioletIndexClearSky}",
-                                              style: const TextStyle(
-                                                fontSize: 30,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w900,
                                               ),
-                                            ),
-                                            const Spacer(),
-                                            Row(
-                                              children: const [
-                                                Text(
-                                                  "UVI",
-                                                  style: TextStyle(
-                                                    fontSize: 30,
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.w900,
+                                              const Spacer(),
+                                              Row(
+                                                children: const [
+                                                  Text(
+                                                    "%",
+                                                    style: TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w900,
+                                                    ),
                                                   ),
+                                                  Icon(
+                                                    Icons.shower_outlined,
+                                                    color: Colors.white,
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                              Text(
+                                                "${_forecast.currentForecast?.ultravioletIndexClearSky}",
+                                                style: const TextStyle(
+                                                  fontSize: 30,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w900,
                                                 ),
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 10),
-                                      ],
+                                              ),
+                                              const Spacer(),
+                                              Row(
+                                                children: const [
+                                                  Text(
+                                                    "UVI",
+                                                    style: TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w900,
+                                                    ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.wb_sunny_outlined,
+                                                    color: Colors.white,
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                              Text(
+                                                "${_forecast.currentForecast?.windSpeed}",
+                                                style: const TextStyle(
+                                                  fontSize: 30,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w900,
+                                                ),
+                                              ),
+                                              const Spacer(),
+                                              Row(
+                                                children: const [
+                                                  Text(
+                                                    "M/S",
+                                                    style: TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w900,
+                                                    ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.air_outlined,
+                                                    color: Colors.white,
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                           ),
