@@ -58,17 +58,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late bool _loading;
+  late double opacityLevel;
+  late double positionLevel;
   late Forecast _forecast;
 
   @override
   void initState() {
     super.initState();
-    _loading = true;
+    opacityLevel = 0.0;
+    positionLevel = 300;
     API.getForecast().then((forecast) {
       setState(() {
         _forecast = forecast;
-        _loading = false;
+        Future.delayed(const Duration(seconds: 1), () {
+          print("executed");
+          opacityLevel = 1.0;
+          positionLevel = 0;
+          setState(() {});
+        });
       });
     });
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
@@ -126,394 +133,400 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              const Align(
-                alignment: Alignment.topCenter,
-                child: FittedBox(
-                  alignment: Alignment.center,
-                  fit: BoxFit.contain,
-                  child: Text(
-                    "Hello,\nZoe!",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 48,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
+          body: AnimatedOpacity(
+            opacity: opacityLevel,
+            duration: const Duration(milliseconds: 3000),
+            curve: Curves.easeOutExpo,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                const Align(
+                  alignment: Alignment.topCenter,
+                  child: FittedBox(
+                    alignment: Alignment.center,
+                    fit: BoxFit.contain,
+                    child: Text(
+                      "Hello,\nZoe!",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(50),
-                      ),
-                      border: Border.all(
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        width: 5,
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        const Text(
-                          "Today's Outfit",
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900,
-                          ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(50),
                         ),
-                        _loading
-                            ? Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(30),
-                                    ),
-                                    color: Color.fromARGB(55, 0, 0, 0),
-                                  ),
-                                  width: double.infinity,
-                                  constraints:
-                                      const BoxConstraints(maxHeight: 100),
-                                  clipBehavior: Clip.hardEdge,
-                                  child: const SizedBox(
-                                    height: 200,
-                                    child: const Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: const CircularProgressIndicator(
-                                          strokeWidth: 5,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            : Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10),
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.rectangle,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(30),
-                                          ),
-                                          color: Color.fromARGB(55, 0, 0, 0),
-                                        ),
-                                        height: 100,
-                                        clipBehavior: Clip.hardEdge,
-                                        child: const Image(
-                                          image: AssetImage(
-                                              'images/Light_Shirt_.png'),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10),
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.rectangle,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(30),
-                                          ),
-                                          color: Color.fromARGB(55, 0, 0, 0),
-                                        ),
-                                        height: 100,
-                                        clipBehavior: Clip.hardEdge,
-                                        child: const Image(
-                                          image:
-                                              AssetImage('images/Shorts.png'),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10),
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.rectangle,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(30),
-                                          ),
-                                          color: Color.fromARGB(55, 0, 0, 0),
-                                        ),
-                                        constraints: const BoxConstraints(
-                                            maxHeight: 200),
-                                        clipBehavior: Clip.hardEdge,
-                                        child: const Image(
-                                          image: AssetImage(
-                                              'images/Sunscreen_.png'),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                        const Text(
-                          "Current Forecast",
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900,
-                          ),
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          width: 5,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(30),
-                              ),
-                              color: Color.fromARGB(55, 0, 0, 0),
+                      ),
+                      child: Column(
+                        children: [
+                          const Text(
+                            "Today's Outfit",
+                            style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
                             ),
-                            width: double.infinity,
-                            constraints: const BoxConstraints(maxHeight: 200),
-                            clipBehavior: Clip.hardEdge,
-                            child: _loading
-                                ? const SizedBox(
-                                    height: 200,
-                                    child: Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 5,
-                                          color: Colors.white,
+                          ),
+                          opacityLevel == 0.0
+                              ? Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(30),
+                                      ),
+                                      color: Color.fromARGB(55, 0, 0, 0),
+                                    ),
+                                    width: double.infinity,
+                                    constraints:
+                                        const BoxConstraints(maxHeight: 100),
+                                    clipBehavior: Clip.hardEdge,
+                                    child: const SizedBox(
+                                      height: 200,
+                                      child: const Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child:
+                                              const CircularProgressIndicator(
+                                            strokeWidth: 5,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  )
-                                : SingleChildScrollView(
-                                    scrollDirection: Axis.vertical,
-                                    child: Center(
-                                      child: Column(
-                                        children: [
-                                          const SizedBox(height: 10),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                "${_forecast.currentForecast?.airTemperature}",
-                                                style: const TextStyle(
-                                                  fontSize: 30,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w900,
-                                                ),
-                                              ),
-                                              const Spacer(),
-                                              Row(
-                                                children: const [
-                                                  Text(
-                                                    "C°",
-                                                    style: TextStyle(
-                                                      fontSize: 30,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                    ),
-                                                  ),
-                                                  Icon(
-                                                    Icons.thermostat_outlined,
-                                                    color: Colors.white,
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                            ],
+                                  ),
+                                )
+                              : Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.rectangle,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(30),
+                                            ),
+                                            color: Color.fromARGB(55, 0, 0, 0),
                                           ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                "${_forecast.currentForecast?.relativeHumidity}",
-                                                style: const TextStyle(
-                                                  fontSize: 30,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w900,
-                                                ),
-                                              ),
-                                              const Spacer(),
-                                              Row(
-                                                children: const [
-                                                  Text(
-                                                    "%",
-                                                    style: TextStyle(
-                                                      fontSize: 30,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                    ),
-                                                  ),
-                                                  Icon(
-                                                    Icons.water_drop_outlined,
-                                                    color: Colors.white,
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                            ],
+                                          height: 100,
+                                          clipBehavior: Clip.hardEdge,
+                                          child: const Image(
+                                            image: AssetImage(
+                                                'images/Light_Shirt_.png'),
                                           ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                "${_forecast.oneHourForecast?.precipitationAmount}",
-                                                style: const TextStyle(
-                                                  fontSize: 30,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w900,
-                                                ),
-                                              ),
-                                              const Spacer(),
-                                              Row(
-                                                children: const [
-                                                  Text(
-                                                    "%",
-                                                    style: TextStyle(
-                                                      fontSize: 30,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                    ),
-                                                  ),
-                                                  Icon(
-                                                    Icons.shower_outlined,
-                                                    color: Colors.white,
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                "${_forecast.currentForecast?.ultravioletIndexClearSky}",
-                                                style: const TextStyle(
-                                                  fontSize: 30,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w900,
-                                                ),
-                                              ),
-                                              const Spacer(),
-                                              Row(
-                                                children: const [
-                                                  Text(
-                                                    "UVI",
-                                                    style: TextStyle(
-                                                      fontSize: 30,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                    ),
-                                                  ),
-                                                  Icon(
-                                                    Icons.wb_sunny_outlined,
-                                                    color: Colors.white,
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                              Text(
-                                                "${_forecast.currentForecast?.windSpeed}",
-                                                style: const TextStyle(
-                                                  fontSize: 30,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w900,
-                                                ),
-                                              ),
-                                              const Spacer(),
-                                              Row(
-                                                children: const [
-                                                  Text(
-                                                    "M/S",
-                                                    style: TextStyle(
-                                                      fontSize: 30,
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                    ),
-                                                  ),
-                                                  Icon(
-                                                    Icons.air_outlined,
-                                                    color: Colors.white,
-                                                  ),
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                width: 20,
-                                              ),
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          )
-                                        ],
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.rectangle,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(30),
+                                            ),
+                                            color: Color.fromARGB(55, 0, 0, 0),
+                                          ),
+                                          height: 100,
+                                          clipBehavior: Clip.hardEdge,
+                                          child: const Image(
+                                            image:
+                                                AssetImage('images/Shorts.png'),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.rectangle,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(30),
+                                            ),
+                                            color: Color.fromARGB(55, 0, 0, 0),
+                                          ),
+                                          constraints: const BoxConstraints(
+                                              maxHeight: 200),
+                                          clipBehavior: Clip.hardEdge,
+                                          child: const Image(
+                                            image: AssetImage(
+                                                'images/Sunscreen_.png'),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                          const Text(
+                            "Current Forecast",
+                            style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                            ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(30),
+                                ),
+                                color: Color.fromARGB(55, 0, 0, 0),
+                              ),
+                              width: double.infinity,
+                              constraints: const BoxConstraints(maxHeight: 200),
+                              clipBehavior: Clip.hardEdge,
+                              child: opacityLevel == 0.0
+                                  ? const SizedBox(
+                                      height: 200,
+                                      child: Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 5,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
+                                      child: Center(
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(height: 10),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text(
+                                                  "${_forecast.currentForecast?.airTemperature}",
+                                                  style: const TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Row(
+                                                  children: const [
+                                                    Text(
+                                                      "C°",
+                                                      style: TextStyle(
+                                                        fontSize: 30,
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w900,
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.thermostat_outlined,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text(
+                                                  "${_forecast.currentForecast?.relativeHumidity}",
+                                                  style: const TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Row(
+                                                  children: const [
+                                                    Text(
+                                                      "%",
+                                                      style: TextStyle(
+                                                        fontSize: 30,
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w900,
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.water_drop_outlined,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text(
+                                                  "${_forecast.oneHourForecast?.precipitationAmount}",
+                                                  style: const TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Row(
+                                                  children: const [
+                                                    Text(
+                                                      "%",
+                                                      style: TextStyle(
+                                                        fontSize: 30,
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w900,
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.shower_outlined,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text(
+                                                  "${_forecast.currentForecast?.ultravioletIndexClearSky}",
+                                                  style: const TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Row(
+                                                  children: const [
+                                                    Text(
+                                                      "UVI",
+                                                      style: TextStyle(
+                                                        fontSize: 30,
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w900,
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.wb_sunny_outlined,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: [
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                Text(
+                                                  "${_forecast.currentForecast?.windSpeed}",
+                                                  style: const TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Row(
+                                                  children: const [
+                                                    Text(
+                                                      "M/S",
+                                                      style: TextStyle(
+                                                        fontSize: 30,
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w900,
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.air_outlined,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
