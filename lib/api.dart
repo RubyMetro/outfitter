@@ -6,7 +6,7 @@ const String address = '5338 Golden Triangle Boulevard';
 
 class API {
   static Future<Forecast> getForecast() async {
-    String url = 'http://localhost:8080/outfitter/forecast/position=$address';
+    String url = 'http://10.0.2.2:8080/outfitter/forecast/position=$address';
     try {
       final response = await http.get(Uri.parse(url));
       if (200 == response.statusCode) {

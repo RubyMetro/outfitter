@@ -19,8 +19,10 @@
   along with this program.  If not, see <https://www.gnu.org/licenses/>.*/
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'api.dart';
 import 'api/Forecast.dart';
+import 'WeatherTheme.dart';
 
 void main() {
   print(
@@ -69,28 +71,45 @@ class _MyHomePageState extends State<MyHomePage> {
         _loading = false;
       });
     });
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
   }
 
-  List<Color> day = [
-    const Color.fromARGB(255, 15, 81, 143),
-    const Color.fromARGB(255, 53, 162, 182)
-  ];
-  List<Color> sunrise = [
-    const Color.fromARGB(255, 69, 122, 182),
-    const Color.fromARGB(255, 221, 130, 10)
-  ];
-  List<Color> sunset = [
-    const Color.fromARGB(255, 47, 40, 114),
-    const Color.fromARGB(255, 221, 105, 10)
-  ];
-  List<Color> cloudy = [
-    const Color.fromARGB(255, 135, 134, 146),
-    const Color.fromARGB(255, 64, 64, 71)
-  ];
-  List<Color> night = [
-    const Color.fromARGB(255, 22, 18, 58),
-    const Color.fromARGB(255, 50, 4, 77)
-  ];
+  WeatherTheme day = WeatherTheme(
+    [
+      const Color.fromARGB(255, 15, 81, 143),
+      const Color.fromARGB(255, 53, 162, 182)
+    ],
+    Colors.white,
+  );
+  WeatherTheme sunrise = WeatherTheme(
+    [
+      const Color.fromARGB(255, 69, 122, 182),
+      const Color.fromARGB(255, 236, 214, 182)
+    ],
+    Colors.white,
+  );
+  WeatherTheme sunset = WeatherTheme(
+    [
+      const Color.fromARGB(255, 47, 40, 114),
+      const Color.fromARGB(255, 221, 105, 10)
+    ],
+    Colors.white,
+  );
+  WeatherTheme cloudy = WeatherTheme(
+    [
+      const Color.fromARGB(255, 135, 134, 146),
+      const Color.fromARGB(255, 64, 64, 71)
+    ],
+    Colors.white,
+  );
+  WeatherTheme night = WeatherTheme(
+    [
+      const Color.fromARGB(255, 22, 18, 58),
+      const Color.fromARGB(255, 50, 4, 77)
+    ],
+    Colors.white,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -102,224 +121,310 @@ class _MyHomePageState extends State<MyHomePage> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: day,
+            colors: night.bg,
           ),
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: ListView(
+          body: Column(
             children: [
-              Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: FittedBox(
-                        fit: BoxFit.contain,
-                        child: Text(
-                          "Welcome,\nJane.",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 48,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Align(
+                alignment: Alignment.topCenter,
+                child: FittedBox(
+                  alignment: Alignment.center,
+                  fit: BoxFit.contain,
+                  child: Text(
+                    "Hello,\nZoe!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    child: Container(
-                      width: double.infinity,
-                      constraints:
-                          const BoxConstraints(maxHeight: 800, minHeight: 100),
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(30.0),
-                        ),
-                        color: Color.fromARGB(43, 255, 255, 255),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(50),
                       ),
-                      child: ListView(
-                        shrinkWrap: true,
-                        children: [
-                          ConstrainedBox(
-                            constraints: const BoxConstraints(
-                              maxHeight: 300,
-                            ),
-                            child: Container(
-                              margin: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.white,
-                                  width: 5,
-                                ),
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(30),
-                                ),
-                              ),
-                              child: ListView(
-                                shrinkWrap: true,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(5),
-                                        child: ClipRRect(
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                          child: Container(
-                                            constraints: const BoxConstraints(
-                                              maxHeight: 200,
-                                              maxWidth: 200,
-                                            ),
-                                            child: const Image(
-                                              image: AssetImage(
-                                                  'images/placeholder.jpg'),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 5,
-                                          ),
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                        ),
-                                        height: 100,
-                                        width: 100,
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(5),
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: Text(
-                                              "bottom Placeholder",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 5,
-                                          ),
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                        ),
-                                        height: 100,
-                                        width: 100,
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(5),
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: Text(
-                                              "Coat Placeholder",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Container(
-                                        margin: const EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 5,
-                                          ),
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                        ),
-                                        height: 100,
-                                        width: 100,
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(5),
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: Text(
-                                              "Sunscreen\nPlaceholder",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.white,
-                                            width: 5,
-                                          ),
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                        ),
-                                        height: 100,
-                                        width: 100,
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(5),
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: Text(
-                                              "Umbrella\nPlaceholder",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
+                      border: Border.all(
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        width: 5,
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        const Text(
+                          "Today's Outfit",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900,
                           ),
-                          Container(
-                            height: 600,
-                            margin: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.white,
-                                width: 5,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30),
+                                    ),
+                                    color: Color.fromARGB(55, 0, 0, 0),
+                                  ),
+                                  height: 100,
+                                  clipBehavior: Clip.hardEdge,
+                                  child: const Image(
+                                    image:
+                                        AssetImage('images/Light_Shirt_.png'),
+                                  ),
+                                ),
                               ),
-                              borderRadius: const BorderRadius.all(
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30),
+                                    ),
+                                    color: Color.fromARGB(55, 0, 0, 0),
+                                  ),
+                                  height: 100,
+                                  clipBehavior: Clip.hardEdge,
+                                  child: const Image(
+                                    image: AssetImage('images/Shorts.png'),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30),
+                                    ),
+                                    color: Color.fromARGB(55, 0, 0, 0),
+                                  ),
+                                  height: 100,
+                                  clipBehavior: Clip.hardEdge,
+                                  child: const Image(
+                                    image: AssetImage('images/Sunscreen_.png'),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Text(
+                          "Current Forecast",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
                                 Radius.circular(30),
                               ),
+                              color: Color.fromARGB(55, 0, 0, 0),
                             ),
+                            width: double.infinity,
+                            clipBehavior: Clip.hardEdge,
+                            child: _loading
+                                ? const Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 5,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  )
+                                : Center(
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(height: 10),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            const SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              "${_forecast.currentForecast?.airTemperature}",
+                                              style: const TextStyle(
+                                                fontSize: 30,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                            const Spacer(),
+                                            Row(
+                                              children: const [
+                                                Icon(
+                                                  Icons.thermostat_outlined,
+                                                  color: Colors.white,
+                                                ),
+                                                Text(
+                                                  "C°",
+                                                  style: TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              width: 20,
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            const SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              "${_forecast.currentForecast?.relativeHumidity}",
+                                              style: const TextStyle(
+                                                fontSize: 30,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                            const Spacer(),
+                                            Row(
+                                              children: const [
+                                                Icon(
+                                                  Icons.water_drop_outlined,
+                                                  color: Colors.white,
+                                                ),
+                                                Text(
+                                                  "%",
+                                                  style: TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              width: 20,
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            const SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              "${_forecast.oneHourForecast?.precipitationAmount}",
+                                              style: const TextStyle(
+                                                fontSize: 30,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                            const Spacer(),
+                                            Row(
+                                              children: const [
+                                                Icon(
+                                                  Icons.shower_outlined,
+                                                  color: Colors.white,
+                                                ),
+                                                Text(
+                                                  "%",
+                                                  style: TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              width: 20,
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            const SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              "${_forecast.currentForecast?.ultravioletIndexClearSky}",
+                                              style: const TextStyle(
+                                                fontSize: 30,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                            const Spacer(),
+                                            Row(
+                                              children: const [
+                                                Text(
+                                                  "UVI",
+                                                  style: TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w900,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              width: 20,
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 10),
+                                      ],
+                                    ),
+                                  ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              )
             ],
           ),
         ),
