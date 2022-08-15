@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, unnecessary_const
 
 /*Outfitter is a powerful weather tool that uses all aspects of local conditions
   to create an outfit for you.
@@ -173,70 +173,102 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontWeight: FontWeight.w900,
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                              child: Padding(
+                        _loading
+                            ? Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                    shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(30),
                                     ),
                                     color: Color.fromARGB(55, 0, 0, 0),
                                   ),
-                                  height: 100,
-                                  clipBehavior: Clip.hardEdge,
-                                  child: const Image(
-                                    image:
-                                        AssetImage('images/Light_Shirt_.png'),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(30),
-                                    ),
-                                    color: Color.fromARGB(55, 0, 0, 0),
-                                  ),
-                                  height: 100,
-                                  clipBehavior: Clip.hardEdge,
-                                  child: const Image(
-                                    image: AssetImage('images/Shorts.png'),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(30),
-                                    ),
-                                    color: Color.fromARGB(55, 0, 0, 0),
-                                  ),
+                                  width: double.infinity,
                                   constraints:
-                                      const BoxConstraints(maxHeight: 200),
+                                      const BoxConstraints(maxHeight: 100),
                                   clipBehavior: Clip.hardEdge,
-                                  child: const Image(
-                                    image: AssetImage('images/Sunscreen_.png'),
+                                  child: const SizedBox(
+                                    height: 200,
+                                    child: const Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: const CircularProgressIndicator(
+                                          strokeWidth: 5,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
+                              )
+                            : Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(30),
+                                          ),
+                                          color: Color.fromARGB(55, 0, 0, 0),
+                                        ),
+                                        height: 100,
+                                        clipBehavior: Clip.hardEdge,
+                                        child: const Image(
+                                          image: AssetImage(
+                                              'images/Light_Shirt_.png'),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(30),
+                                          ),
+                                          color: Color.fromARGB(55, 0, 0, 0),
+                                        ),
+                                        height: 100,
+                                        clipBehavior: Clip.hardEdge,
+                                        child: const Image(
+                                          image:
+                                              AssetImage('images/Shorts.png'),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(30),
+                                          ),
+                                          color: Color.fromARGB(55, 0, 0, 0),
+                                        ),
+                                        constraints: const BoxConstraints(
+                                            maxHeight: 200),
+                                        clipBehavior: Clip.hardEdge,
+                                        child: const Image(
+                                          image: AssetImage(
+                                              'images/Sunscreen_.png'),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
                         const Text(
                           "Current Forecast",
                           style: TextStyle(
