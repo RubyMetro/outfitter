@@ -128,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: day.bg,
+            colors: sunrise.bg,
           ),
         ),
         child: const Scaffold(
